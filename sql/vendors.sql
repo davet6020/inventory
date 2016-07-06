@@ -1,0 +1,18 @@
+INSERT INTO `vendors` (`name`) VALUES
+('Adorama'),
+('Amazon'),
+('Apple'),
+('Apple Store'),
+('Asus'),
+('ATT'),
+('Blackberry'),
+('ConvergeAV | StarTech.com'),
+('Lenovo'),
+('MSI'),
+('Newegg'),
+('Micro Center'),
+('Polycom'),
+('Samsung'),
+('T-Mobile'),
+('ViewSonic'),
+('XOTIC PC');

@@ -1,0 +1,81 @@
+{% extends 'cdnloads.html' %}
+
+{% block content %}
+
+  <h1>{{title}}</h1>
+    <table class="sometable" style="width:100%">
+      <tr>
+        {% for column in columns %}
+          <th>{{column.name}}</th>
+        {% endfor %}
+      </tr>
+
+      {% if report == "departments" %}
+        {% for row in rows %}
+          <tr>
+            <td>{{row.Department}}</td>
+            <td>{{row.LastName}}</td>
+            <td>{{row.FirstName}}</td>
+            <td>{{row.Email}}</td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+
+      {% if report == "hardwares" %}
+        {% for row in rows %}
+          <tr>
+            <td>{{row.Type}}</td>
+            <td>{{row.Vendor}}</td>
+            <td>{{row.Serial}}</td>
+            <td>{{row.Series}}</td>
+            <td>{{row.Model}}</td>
+            <td>{{row.CPU}}</td>
+            <td>{{row.Ram}}</td>
+            <td>{{row.HDD}}</td>
+            <td>{{row.OS}}</td>
+            <td>{{row.Graphics}}</td>
+            <td>{{row.Bluetooth}}</td>
+            <td>{{row.WiFi}}</td>
+            <td>{{row.Security}}</td>
+            <td>{{row.CD_DVD}}</td>
+            <td>{{row.State}}</td>
+            <td>{{row.Description}}</td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+
+      {% if report == "types" %}
+        {% for row in rows %}
+          <tr>
+            <td>{{row.Name}}</td>
+           </tr>
+        {% endfor %}
+      {% endif %}
+
+      {% if report == "users" %}
+        {% for row in rows %}
+          <tr>
+            <td>{{row.LastName}}</td>
+            <td>{{row.FirstName}}</td>
+            <td>{{row.Email}}</td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+
+      {% if report == "vendors" %}
+        {% for row in rows %}
+          <tr>
+            <td>{{row.Name}}</td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+
+    </table>
+
+{% endblock %}
+
+
+<!-- 
+bluetooth as 'Bluetooth', wireless as 'WiFi', security as 'Security', cdrom as 'CD/DVD', 
+state as 'State', description as 'Description' -->
+

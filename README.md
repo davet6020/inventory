@@ -1,2 +1,2 @@
 # inventory
-simple inventory control for small business
+Simple inventory control for a small business

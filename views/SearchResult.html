@@ -1,0 +1,128 @@
+  {% extends 'cdnloads.html' %}
+
+  {% block content %}
+
+  <div class="container">
+    <!-- add search form -->
+    <form class="navbar-form navbar-right" role="search" method="POST" action="/search/search">
+
+        <div class="input-group col-lg-12">
+          <input type="text" class="form-control" name="searchTerm" placeholder="Search for inventory information">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+
+      <fieldset>
+        <!-- Multiple Radios (inline) -->
+        <div class="form-group col-lg-12">
+          <!-- <label class="col-md-4 control-label" for="radios">Choose Search Category</label> -->
+          <label class="col-md-4 control-label" for="radios"> </label>
+          <div class="col-md-12"> 
+            <label class="radio-inline" for="radios-0">
+              <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+              Departments
+            </label> 
+            <label class="radio-inline" for="radios-1">
+              <input type="radio" name="radios" id="radios-1" value="2">
+              Hardware
+            </label> 
+            <label class="radio-inline" for="radios-2">
+              <input type="radio" name="radios" id="radios-2" value="3">
+              Types
+            </label> 
+            <label class="radio-inline" for="radios-3">
+              <input type="radio" name="radios" id="radios-3" value="4">
+              Users
+            </label>
+            <label class="radio-inline" for="radios-4">
+              <input type="radio" name="radios" id="radios-4" value="5">
+              Vendors
+            </label>
+          </div>
+        </div>
+      </fieldset>
+        
+    </form>
+  </div>
+
+  <table class="sometable" style="width:150%">
+    <tr>
+      {% for column in columns %}
+        <th>{{column.name}}</th>
+      {% endfor %}
+    </tr>
+    
+  {% if radio == '1' %}
+    {% for row in rows %}
+    <tr>
+      <td>{{row.Department}}</td>
+      <td>{{row.LastName}}</td>
+      <td>{{row.FirstName}} </td>
+      <td>{{row.Email}}</td>
+    </tr>
+    {% endfor %}
+
+  {% elseif radio == '2' %}
+    {% for row in rows %}
+    <tr>
+      <td>{{row.username}}</td>
+      <td>{{row.type}}</td>
+      <td>{{row.vendor}}</td>
+      <td>{{row.serial_number}}</td>
+      <td>{{row.series}}</td>
+      <td>{{row.model}}</td>
+      <td>{{row.cpu}}</td>
+      <td>{{row.ram}}</td>
+      <td>{{row.hard_drive}}</td>
+      <td>{{row.os}}</td>
+      <td>{{row.graphics}}</td>
+      <td>{{row.bluetooth}}</td>
+      <td>{{row.wireless}}</td>
+      <td>{{row.security}}</td>
+      <td>{{row.cdrom}}</td>
+      <td>{{row.state}}</td>
+      <td>{{row.date_purchased|date('Y-m-d')}}</td>
+      <td>{{row.total_cost}}</td>
+    </tr>
+    {% endfor %}
+
+
+  {% endif %}
+  </table>
+
+
+
+  <!-- {% if radio == '1' %}
+    {% for row in rows %}
+      <td>{{row.name}}</td>
+      <td>{{row.email}}</td>
+      <td>{{row.firstname}} </td>
+      <td>{{row.lastname}}</td>
+    {% endfor %}
+  
+  {% elseif radio == '2' %}
+    {% for hw in rows %}
+      <div>{{hw.username}} {{hw.type}} {{hw.vendor}} {{hw.serial_number}} {{hw.series}} {{hw.model}} {{hw.cpu}} {{hw.ram}} {{hw.hard_drive}} {{hw.os}} {{hw.graphics}} {{hw.bluetooth}} {{hw.wireless}} {{hw.security}} {{hw.cdrom}} {{hw.state}} {{hw.date_purchased|date('Y-m-d')}} {{hw.total_cost}}</div>
+    {% endfor %}
+  
+  {% elseif radio == '3' %}
+    {% for type in rows %}
+      <div>{{type.name}}</div>
+    {% endfor %}
+  
+  {% elseif radio == '4' %}
+    {% for user in rows %}
+      <div><span>{{ user.lastname }}, {{ user.firstname }}</span> <span>{{ user.email }}</span></div>
+    {% endfor %}
+  
+  {% elseif radio == '5' %}
+    {% for vend in rows %}
+      <div>{{vend.name}}</div>
+    {% endfor %}
+  
+  {% endif %} -->
+
+{% endblock %}

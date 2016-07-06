@@ -1,0 +1,39 @@
+  {% extends 'cdnloads.html' %}
+
+  {% block content %}
+
+  <h1>{{title}}</h1>
+  <h3>{{ createResults }}</h3>
+    <form class="form-horizontal" method="POST" action="/departments/update">
+      <div class="form-group">
+          <label for="departmentName" class="control-label col-xs-2">Department Name</label>
+          <div class="col-xs-4">
+              <input type="text" class="form-control" id="departmentName" name="departmentName" value="{{departmentName}}" placeholder="Department Name">
+              <input type="hidden" name="originalDepartmentName" value="{{departmentName}}">
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="manager" class="control-label col-xs-2">Assigned To</label>
+          <div class="col-xs-4">
+              <select name="manager">
+                {% for dm in depmanager %}
+                  {% set depm = dm.lastname %}
+                  {% for manager in managers %}
+                    {% if manager.lastname == depm %}
+                      <option value="{{manager.manager_id}}" selected>{{manager.firstname}} {{manager.lastname}}</option>
+                    {% else %}
+                      <option value="{{manager.manager_id}}">{{manager.firstname}} {{manager.lastname}}</option>
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+              </select>
+          </div>
+      </div>
+      <div class="form-group">
+          <div class="col-xs-offset-2 col-xs-10">
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+      </div>
+    </form>
+
+{% endblock %}
